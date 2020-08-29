@@ -158,3 +158,29 @@ class FlPanEnd extends FlTouchNormalInput with EquatableMixin {
         velocity,
       ];
 }
+
+/// Abstract class for mouse hover input
+abstract class FlMouseHoverInput extends FlTouchInput {}
+
+/// Represents a [GestureDetector.onPanUpdate] event.
+class FlMouseEnter extends FlMouseHoverInput with EquatableMixin {
+  /// It is a localized touch position inside our widget,
+  /// it represents [PointerHoverEvent.localPosition].
+  final Offset localPosition;
+
+  /// [localPosition] is a localized position inside our widget,
+  /// it represents [PointerHoverEvent.localPosition].
+  FlMouseEnter(this.localPosition);
+
+  /// Returns local offset of the touch in the screen,
+  /// it represents [PointerHoverEvent.localPosition].
+  @override
+  Offset getOffset() {
+    return localPosition;
+  }
+
+  @override
+  List<Object> get props => [
+        localPosition,
+      ];
+}
